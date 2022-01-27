@@ -1,0 +1,18 @@
+
+server:
+  port: 5010
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id : product-service
+          uri: http://localhost:5000
+          predicates:
+            - Path=/s1/**
+        - id: cart-service
+          uri: http://localhost:5001
+          predicates:
+            - Path=/s2/**
